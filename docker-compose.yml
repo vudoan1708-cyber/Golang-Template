@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  app:
+    image: cosmtrek/air
+    # working_dir value has to be the same of mapped volume
+    working_dir: /app
+    build:
+      dockerfile: Dockerfile
+      context: .
+      target: dev
+    restart: always
+    env_file: .env
+    volumes:
+      - ./:/app
+    ports:
+      - ${BE_PORT}:${BE_PORT}

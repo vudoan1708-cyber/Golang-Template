@@ -1,0 +1,10 @@
+vendor/*
+!vendor/modules.txt
+
+tmp
+
+bin
+
+node_modules
+
+.env

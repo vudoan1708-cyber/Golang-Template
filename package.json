@@ -1,0 +1,10 @@
+{
+  "name": "go",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "nodemon --exec go run cmd/main.go"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
