@@ -7,6 +7,7 @@ import (
 
 type UserProxy interface {
 	Get() (models.User, error)
+	Update(args models.User) (models.User, error)
 }
 
 // This is a private struct, its information can only be retrieved via interacting with the above interface
@@ -32,6 +33,29 @@ func (up *userProxyBasic) Get() (models.User, error) {
 		Name:    up.name,
 		Age:     up.age,
 		Address: up.address,
+	}
+
+	return mUser, nil
+}
+
+func (up *userProxyBasic) Update(args models.User) (models.User, error) {
+	var mUser models.User = models.User{
+		ID:      up._id,
+		Name:    up.name,
+		Age:     up.age,
+		Address: up.address,
+	}
+	if args.ID != "" {
+		mUser.ID = args.ID
+	}
+	if args.Name != "" {
+		mUser.Name = args.Name
+	}
+	if args.Age > 0 {
+		mUser.Age = args.Age
+	}
+	if args.Address != "" {
+		mUser.Address = args.Address
 	}
 
 	return mUser, nil
